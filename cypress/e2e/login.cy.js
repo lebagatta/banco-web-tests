@@ -1,6 +1,8 @@
 describe('Login', () => {
-  it('login com dados válidos devem permitir entrada no sistema', () => {
+  beforeEach(() => {
     cy.visit('http://localhost:4000')
+  })
+  it('login com dados válidos devem permitir entrada no sistema', () => {
     cy.get('#login-section').should('be.visible')
     cy.get('#username').type('julio.lima')
     cy.get('#senha').type('123456')
@@ -9,7 +11,6 @@ describe('Login', () => {
     cy.contains('h4', 'Realizar Transferência').should('be.visible')
   })
   it('login com dados inválidos deve apresentar mensagem de erro', () => {
-    cy.visit('http://localhost:4000')
     cy.get('#login-section').should('be.visible')
     cy.get('#username').type('julio.lima')
     cy.get('#senha').type('654321')
